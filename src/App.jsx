@@ -30,6 +30,10 @@ function App() {
     setSelectedCountry(name);
   }
 
+  function handleGoBack() {
+    setViewDetails(false);
+  }
+
   return (
     <>
       <Header />
@@ -47,6 +51,7 @@ function App() {
             <CountryDetails
               countries={countries}
               selectedCountry={selectedCountry}
+              onGoBack={handleGoBack}
             />
           )}
 

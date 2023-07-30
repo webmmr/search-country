@@ -4,7 +4,7 @@ import DisplayCountryData from "./DisplayCountryData";
 // import Loader from "./Loader";
 // import ErrorMessage from "./ErrorMessage";
 
-const CountryDetails = ({ countries, selectedCountry }) => {
+const CountryDetails = ({ countries, selectedCountry, onGoBack }) => {
   // console.log(selectedCountry);
 
   // const {
@@ -31,7 +31,7 @@ const CountryDetails = ({ countries, selectedCountry }) => {
     //   {error && <ErrorMessage message={error} />}
     // </div>
 
-    <DisplayCountryData country={countryData} />
+    <DisplayCountryData country={countryData} onGoBack={onGoBack} />
   );
 };
 
