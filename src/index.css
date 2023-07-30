@@ -20,10 +20,23 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  color: var(--veryDarkBlueLight);
-  background-color: var(--veryLightGray);
   min-height: 100vh;
 }
+
+.light-mode {
+  color: var(--veryDarkBlue);
+  background-color: var(--veryLightGray);
+}
+
+.dark-mode {
+  color: var(--veryLightGray);
+  background-color: var(--veryDarkBlue);
+}
+
+.dark-module {
+  background-color: var(--darkBlue);
+}
+
 header {
   font-weight: 600;
 }

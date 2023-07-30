@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import IonIcon from "@reacticons/ionicons";
+// import CountryDetails from "./CountryDetails";
 
 const DisplayCountryData = ({
   country,
@@ -7,6 +8,7 @@ const DisplayCountryData = ({
   onGoBack,
   onSelectCountry,
 }) => {
+  console.log(country);
   // console.log(Object.keys(country[0].name.nativeName));
 
   const nativeNames = [...Object.values(country.name.nativeName)]
@@ -21,10 +23,7 @@ const DisplayCountryData = ({
 
   return (
     <>
-      <button
-        className="px-8 py-2 shadow-md border rounded-md"
-        onClick={onGoBack}
-      >
+      <button className="px-8 py-2 shadow-lg rounded-md" onClick={onGoBack}>
         <span className="mr-4">
           <IonIcon name="arrow-back-outline" className="icon" />
         </span>
@@ -47,6 +46,10 @@ const DisplayCountryData = ({
                 {nativeNames}
               </p>
               <p className="mb-1">
+                <span className="font-semibold">Area: </span>
+                {country.area}
+              </p>
+              <p className="mb-1">
                 <span className="font-semibold">Population: </span>
                 {country.population}
               </p>
@@ -64,6 +67,10 @@ const DisplayCountryData = ({
               </p>
             </div>
             <div className="flex-1">
+              <p className="mb-1">
+                <span className="font-semibold">Timezone: </span>
+                {country.timezones}
+              </p>
               <p className="mb-1">
                 <span className="font-semibold">Top Level Domain: </span>
                 {country.tld}
@@ -86,7 +93,7 @@ const DisplayCountryData = ({
                   return (
                     <span
                       key={value}
-                      className="inline-block px-2 m-2 border shadow-md font-light rounded-sm"
+                      className="inline-block px-2 py-1 m-2 shadow-lg bg-opacity-95 hover:cursor-pointer font-light rounded-sm"
                       onClick={() => onSelectCountry(value)}
                     >
                       {value}

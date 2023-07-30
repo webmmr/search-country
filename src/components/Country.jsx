@@ -1,18 +1,23 @@
 /* eslint-disable react/prop-types */
-const Country = ({ country, onSelectCountry }) => {
+const Country = ({ country, onSelectCountry, lightDarkToggle }) => {
+  // console.log(typeof country);
+  if (Object.keys(country).length === 0) console.log("hi");
   return (
     <li
       onClick={() => onSelectCountry(country.name.common)}
-      className="bg-white shadow-md rounded-md"
-      style={{ cursor: "pointer" }}
+      className="cursor-pointer"
     >
-      <div className="card">
+      <div
+        className={`${
+          lightDarkToggle ? "dark-module" : ""
+        } rounded-lg shadow-lg`}
+      >
         <img
           src={`${country.flags.svg}`}
           alt={`${country.name.common}`}
-          className="h-[200px] w-full"
+          className="h-[220px] w-full rounded-t-lg"
         />
-        <div className="card-body p-8">
+        <div className="lg:p-8 p-4">
           <h3 className="font-bold text-xl mb-4">{country.name.common}</h3>
           <p>
             <span className="font-semibold">Population: </span>

@@ -1,5 +1,5 @@
 const Loader = () => {
-  return <p className="loader">Loading...</p>;
+  return <p className="py-10">Loading...</p>;
 };
 
 export default Loader;
