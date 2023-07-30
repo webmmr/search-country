@@ -1,37 +1,39 @@
 /* eslint-disable react/prop-types */
-// import { useFetch } from "./useFetch";
+
 import DisplayCountryData from "./DisplayCountryData";
-// import Loader from "./Loader";
-// import ErrorMessage from "./ErrorMessage";
 
-const CountryDetails = ({ countries, selectedCountry, onGoBack }) => {
-  // console.log(selectedCountry);
-
-  // const {
-  //   fetchedData: countryData,
-  //   isLoading,
-  //   error,
-  // } = useFetch(
-  //   "https://restcountries.com/v3.1/name/",
-  //   `${selectedCountry}?fullText=true`
-  // );
-
-  // console.log(countryData, isLoading, error);
-
-  const countryData = countries.filter(
+const CountryDetails = ({
+  countries,
+  selectedCountry,
+  onSelectCountry,
+  onGoBack,
+}) => {
+  const filteredCountry = countries.filter(
     (country) => country.name.common === selectedCountry
   );
 
+  let countryData = {};
+
+  for (let i = 0; i < filteredCountry.length; i++) {
+    Object.assign(countryData, filteredCountry[i]);
+  }
+
+  const borderCountries = countryData.borders
+    ? [...countryData.borders]
+        ?.map((borderCountry) =>
+          countries.filter((country) => country.cca3 === borderCountry)
+        )
+        .flat()
+        .map((country) => country.name.common)
+    : [];
+
   return (
-    // <div className="container mx-auto">
-    //   {isLoading && <Loader />}
-
-    //   {!isLoading && !error && <DisplayCountryData countryData={countryData} />}
-
-    //   {error && <ErrorMessage message={error} />}
-    // </div>
-
-    <DisplayCountryData country={countryData} onGoBack={onGoBack} />
+    <DisplayCountryData
+      country={countryData}
+      borderCountries={borderCountries}
+      onGoBack={onGoBack}
+      onSelectCountry={onSelectCountry}
+    />
   );
 };
 
