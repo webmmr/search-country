@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { useFetch } from "./components/useFetch";
-
 import Header from "./components/Header";
 import Control from "./components/Control";
 import CountryList from "./components/CountryList";
@@ -10,18 +8,29 @@ import ErrorMessage from "./components/ErrorMessage";
 import CountryDetails from "./components/CountryDetails";
 
 function App() {
-  const [lightDarkToggle, setLightDarkToggle] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  const [lightDarkToggle, setLightDarkToggle] = useState(false);
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [viewDetails, setViewDetails] = useState(false);
 
-  const {
-    fetchedData: countries,
-    isLoading,
-    error,
-  } = useFetch("https://restcountries.com/v3.1/all");
+  function handleSelectCountry(name) {
+    setViewDetails(true);
+    setSelectedCountry(name);
+    setSearch("");
+  }
+
+  function handleGoBack() {
+    setViewDetails(false);
+  }
+
+  const toggleDarkMode = () => {
+    setLightDarkToggle((prevDarkMode) => !prevDarkMode);
+  };
 
   useEffect(() => {
     const body = document.body;
@@ -38,19 +47,30 @@ function App() {
     };
   }, [lightDarkToggle]);
 
-  function handleSelectCountry(name) {
-    setViewDetails(true);
-    setSelectedCountry(name);
-    setSearch("");
-  }
+  useEffect(() => {
+    async function getData() {
+      try {
+        setIsLoading(true);
+        setError("");
 
-  function handleGoBack() {
-    setViewDetails(false);
-  }
+        const res = await fetch("https://restcountries.com/v3.1/all");
+        if (!res.ok) throw new Error("Something went wrong with fetching data");
 
-  const toggleDarkMode = () => {
-    setLightDarkToggle((prevDarkMode) => !prevDarkMode);
-  };
+        const data = await res.json();
+
+        if (data.Response === "False") throw new Error("Movie not found");
+
+        setCountries(data);
+        setError("");
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getData();
+  }, []);
 
   return (
     <>

@@ -48,15 +48,6 @@ const CountryList = ({
                 lightDarkToggle={lightDarkToggle}
               />
             ))}
-        {/* {search !== "" && search.length < 3
-          ? countries.map((country) => (
-              <Country
-                country={country}
-                key={country.name.common}
-                onSelectCountry={onSelectCountry}
-              />
-            ))
-          : null} */}
       </ul>
     </>
   );

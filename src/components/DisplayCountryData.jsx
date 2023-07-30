@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import IonIcon from "@reacticons/ionicons";
-// import CountryDetails from "./CountryDetails";
+import millify from "millify";
 
 const DisplayCountryData = ({
   country,
@@ -8,9 +8,6 @@ const DisplayCountryData = ({
   onGoBack,
   onSelectCountry,
 }) => {
-  console.log(country);
-  // console.log(Object.keys(country[0].name.nativeName));
-
   const nativeNames = [...Object.values(country.name.nativeName)]
     .map((nativeName) => nativeName.common)
     .join(", ");
@@ -18,8 +15,6 @@ const DisplayCountryData = ({
   const currencies = [...Object.values(country.currencies)]
     .map((currency) => `${currency.name}(${currency.symbol})`)
     .join(", ");
-
-  // console.log(country[0]);
 
   return (
     <>
@@ -47,11 +42,11 @@ const DisplayCountryData = ({
               </p>
               <p className="mb-1">
                 <span className="font-semibold">Area: </span>
-                {country.area}
+                {`${millify(country.area)} sqkm`}
               </p>
               <p className="mb-1">
                 <span className="font-semibold">Population: </span>
-                {country.population}
+                {millify(country.population)}
               </p>
               <p className="mb-1">
                 <span className="font-semibold">Region: </span>
