@@ -12,11 +12,13 @@ const Country = ({ country, onSelectCountry, lightDarkToggle }) => {
           lightDarkToggle ? "dark-module" : ""
         } rounded-lg shadow-lg`}
       >
-        <img
-          src={`${country.flags.svg}`}
-          alt={`${country.name.common}`}
-          className=" w-full rounded-t-lg"
-        />
+        <div className="h-[220px]">
+          <img
+            src={`${country.flags.svg}`}
+            alt={`${country.name.common}`}
+            className="h-[220px] w-full rounded-t-lg"
+          />
+        </div>
         <div className="lg:p-8 p-4">
           <h3 className="font-bold text-xl mb-4">{country.name.common}</h3>
           <p>
