@@ -7,6 +7,7 @@ const DisplayCountryData = ({
   borderCountries,
   onGoBack,
   onSelectCountry,
+  lightDarkToggle,
 }) => {
   const nativeNames = [...Object.values(country.name.nativeName)]
     .map((nativeName) => nativeName.common)
@@ -16,11 +17,18 @@ const DisplayCountryData = ({
     .map((currency) => `${currency.name}(${currency.symbol})`)
     .join(", ");
 
+  const timezones = [...Object.values(country.timezones)].join(", ");
+
   return (
     <>
-      <button className="px-8 py-2 shadow-lg rounded-md" onClick={onGoBack}>
+      <button
+        className={`${
+          lightDarkToggle ? "dark-module" : ""
+        } px-8 py-3 shadow-lg rounded-md`}
+        onClick={onGoBack}
+      >
         <span className="mr-4">
-          <IonIcon name="arrow-back-outline" className="icon" />
+          <IonIcon name="arrow-back-outline" />
         </span>
         Back
       </button>
@@ -32,7 +40,7 @@ const DisplayCountryData = ({
             className="w-full"
           />
         </div>
-        <div className="py-8 px-20 flex flex-col">
+        <div className="py-8 px-20 flex flex-col basis-3/5">
           <h2 className="text-2xl font-bold mb-10">{country.name.common}</h2>
           <div className="flex">
             <div className="flex-1 mr-5">
@@ -64,7 +72,7 @@ const DisplayCountryData = ({
             <div className="flex-1">
               <p className="mb-1">
                 <span className="font-semibold">Timezone: </span>
-                {country.timezones}
+                {timezones}
               </p>
               <p className="mb-1">
                 <span className="font-semibold">Top Level Domain: </span>
@@ -88,7 +96,9 @@ const DisplayCountryData = ({
                   return (
                     <span
                       key={value}
-                      className="inline-block px-2 py-1 m-2 shadow-lg bg-opacity-95 hover:cursor-pointer font-light rounded-sm"
+                      className={`${
+                        lightDarkToggle ? "dark-module" : "light-mode"
+                      } inline-block px-3 py-1 m-2 shadow-lg hover:cursor-pointer font-light rounded-sm`}
                       onClick={() => onSelectCountry(value)}
                     >
                       {value}

@@ -15,10 +15,7 @@ function Header({ onToggleMode, lightDarkToggle, onReset }) {
           onClick={onToggleMode}
         >
           <span className="mr-2">
-            <IonIcon
-              name={`${lightDarkToggle ? "sunny" : "moon"}-outline`}
-              className="icon"
-            />
+            <IonIcon name={`${lightDarkToggle ? "sunny" : "moon"}-outline`} />
           </span>
           {lightDarkToggle ? "Light" : "Dark"} Mode
         </button>

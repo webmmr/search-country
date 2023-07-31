@@ -35,6 +35,7 @@ function App() {
   function handleReset() {
     setSearch("");
     setRegion("");
+    setViewDetails(false);
   }
 
   useEffect(() => {
@@ -113,6 +114,7 @@ function App() {
               selectedCountry={selectedCountry}
               onGoBack={handleGoBack}
               onSelectCountry={handleSelectCountry}
+              lightDarkToggle={lightDarkToggle}
             />
           )}
 

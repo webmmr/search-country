@@ -65,7 +65,7 @@ const CountryList = ({
 
   return (
     <>
-      <ul className="grid gap-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
+      <ul className="grid lg:gap-20 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
         {searchResults.length > 0 ? searchResults : "Sorry, no country found"}
       </ul>
     </>

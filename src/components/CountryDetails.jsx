@@ -7,6 +7,7 @@ const CountryDetails = ({
   selectedCountry,
   onSelectCountry,
   onGoBack,
+  lightDarkToggle,
 }) => {
   const filteredCountry = countries.filter(
     (country) => country.name.common === selectedCountry
@@ -33,6 +34,7 @@ const CountryDetails = ({
       borderCountries={borderCountries}
       onGoBack={onGoBack}
       onSelectCountry={onSelectCountry}
+      lightDarkToggle={lightDarkToggle}
     />
   );
 };
