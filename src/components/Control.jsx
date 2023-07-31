@@ -34,12 +34,12 @@ const Control = ({ search, setSearch, region, setRegion, lightDarkToggle }) => {
           lightDarkToggle ? "dark-module" : ""
         } px-4 py-3 shadow-md bg-transparent rounded-lg my-2`}
       >
-        <option>Search for a region</option>
+        <option value="">Search for a region</option>
         <option value="Africa">Africa</option>
-        <option value="America">America</option>
+        <option value="Americas">America</option>
         <option value="Asia">Asia</option>
         <option value="Europe">Europe</option>
-        <option value="Ocenia">Ocenia</option>
+        <option value="Oceania">Oceania</option>
       </select>
     </div>
   );
