@@ -28,9 +28,14 @@ function App() {
     setViewDetails(false);
   }
 
-  const toggleDarkMode = () => {
+  function toggleDarkMode() {
     setLightDarkToggle((prevDarkMode) => !prevDarkMode);
-  };
+  }
+
+  function handleReset() {
+    setSearch("");
+    setRegion("");
+  }
 
   useEffect(() => {
     const body = document.body;
@@ -74,7 +79,11 @@ function App() {
 
   return (
     <>
-      <Header onToggleMode={toggleDarkMode} lightDarkToggle={lightDarkToggle} />
+      <Header
+        onToggleMode={toggleDarkMode}
+        lightDarkToggle={lightDarkToggle}
+        onReset={handleReset}
+      />
       <main className="py-10">
         <div className="container mx-auto px-3">
           {!viewDetails && (
