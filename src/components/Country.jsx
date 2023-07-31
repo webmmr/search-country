@@ -15,7 +15,7 @@ const Country = ({ country, onSelectCountry, lightDarkToggle }) => {
         <img
           src={`${country.flags.svg}`}
           alt={`${country.name.common}`}
-          className="h-[220px] w-full rounded-t-lg"
+          className=" w-full rounded-t-lg"
         />
         <div className="lg:p-8 p-4">
           <h3 className="font-bold text-xl mb-4">{country.name.common}</h3>
